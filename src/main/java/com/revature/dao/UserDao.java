@@ -77,4 +77,9 @@ public class UserDao {
            return numberOfRecordsDeleted == 1;
         }
     }
+
+//    // GET user by username
+//    public User getUserByUsername(String username){
+//
+//    }
 }
