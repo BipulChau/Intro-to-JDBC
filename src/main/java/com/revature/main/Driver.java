@@ -1,6 +1,6 @@
 package com.revature.main;
 
-import com.revature.dao.ConnectionUtility;
+import com.revature.utilty.ConnectionUtility;
 
 import java.sql.Connection;
 import java.sql.SQLException;
