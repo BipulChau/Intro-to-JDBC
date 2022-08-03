@@ -12,8 +12,7 @@ public class Driver {
     public static void main(String[] args) {
         UserDao userDao = new UserDao();
         try {
-            User userToUpdate = new User(1, "bipul513", "Bipul", "bipulc@gmail.com", "password123");
-            System.out.println(userDao.updateUser(userToUpdate));
+            System.out.println(userDao.deleteUserByUserName("donaldson21"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

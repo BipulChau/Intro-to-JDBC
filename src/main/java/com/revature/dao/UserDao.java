@@ -57,15 +57,24 @@ public class UserDao {
     // UPDATE user using the username provided in the user object parameter
     public User updateUser(User user) throws SQLException {
         try(Connection con = ConnectionUtility.createConnection()){
-            PreparedStatement pstmt = con.prepareStatement("UPDATE climawatch.users SET password=?, email=? where username=?");
+            PreparedStatement pstmt = con.prepareStatement("UPDATE climawatch.users SET password=? where username=?");
             pstmt.setString(1, user.getPassword());
-            pstmt.setString(2, user.getEmail());
-            pstmt.setString(3, user.getUsername());
+            pstmt.setString(2, user.getUsername());
 
             int numberOfUpdatedRecords =  pstmt.executeUpdate();
 
             return new User(user.getSnum(), user.getUsername(), user.getName(), user.getEmail(), user.getPassword());
 
+        }
+    }
+
+    // DELETE user using username provided in the user object parameter
+    public boolean deleteUserByUserName(String username) throws SQLException {
+        try(Connection con = ConnectionUtility.createConnection()){
+            PreparedStatement pstmt = con.prepareStatement("DELETE FROM climawatch.users WHERE username=?");
+            pstmt.setString(1, username);
+           int numberOfRecordsDeleted =  pstmt.executeUpdate();
+           return numberOfRecordsDeleted == 1;
         }
     }
 }
